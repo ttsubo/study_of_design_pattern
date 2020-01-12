@@ -1,0 +1,22 @@
+.DS_Store
+__pycache__/
+*.py[co]
+log/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# pyenv
+.python-version
+
+#vscode
+.vscode
