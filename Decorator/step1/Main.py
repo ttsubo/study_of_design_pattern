@@ -9,6 +9,7 @@ def startMain():
     b1.show()
     b2.show()
     b3.show()
+    print("")
     b4 = SideBorder(
         FullBorder(
             FullBorder(
