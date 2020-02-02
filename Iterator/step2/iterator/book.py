@@ -7,20 +7,18 @@ class Book(object):
 
 
 class BookShelf(object):
-    def __init__(self, maxSize):
-        self.__last = 0
-        self.__books = [None] * maxSize
+    def __init__(self):
+        self.__books = []
 
     def append(self, book):
-        self.__books[self.__last] = book
-        self.__last += 1
+        self.__books.append(book)
 
     def __iter__(self):
         self.__index = 0
         return self
 
     def __next__(self):
-        if self.__index >= self.__last:
+        if self.__index >= len(self.__books):
             raise StopIteration()
         book = self.__books[self.__index]
         self.__index += 1
