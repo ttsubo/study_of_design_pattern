@@ -2,8 +2,9 @@ from mediator.mediator import Mediator
 
 
 class Colleague(Mediator):
-    def __init__(self, mediatorObj):
+    def __init__(self, mediatorObj, name):
         self.mediator = mediatorObj
+        self.name = name
 
     def on_change(self):
         if self.mediator is not None:
@@ -11,10 +12,9 @@ class Colleague(Mediator):
 
 
 class ConcreteColleagueButton(Colleague):
-    def __init__(self, mediatorObj, name=""):
-        super(ConcreteColleagueButton, self).__init__(mediatorObj)
+    def __init__(self, mediatorObj, name=None):
+        super(ConcreteColleagueButton, self).__init__(mediatorObj, name)
         self.active = False
-        self.name = name
 
     def clickButton(self):
         if self.active:
@@ -27,8 +27,7 @@ class ConcreteColleagueButton(Colleague):
 
 class ConcreteColleagueTextArea(Colleague):
     def __init__(self, mediatorObj, name=None):
-        super(ConcreteColleagueTextArea, self).__init__(mediatorObj)
-        self.name = name
+        super(ConcreteColleagueTextArea, self).__init__(mediatorObj, name)
         self.text = None
 
     def inputText(self, text):
