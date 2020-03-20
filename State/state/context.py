@@ -5,8 +5,8 @@ class Context(object):
     def setState(self, obj):
         self.state = obj
     
-    def getState(self):
-        return self.state
-
     def handle(self):
         self.state.handle(self)
+
+    def getState(self):
+        return self.state.getConcreateState()

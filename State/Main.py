@@ -6,27 +6,17 @@ from state.state import ConcreteStateBooting, ConcreteStateRun, ConcreteStateShu
 
 def setConcreteState(operation):
     if operation == "start":
-        return ConcreteStateBooting()
+        return ConcreteStateBooting("booting")
     elif operation == "stop":
-        return ConcreteStateShutDown()
+        return ConcreteStateShutDown("shutdown")
     elif operation == "restart":
-        return ConcreteStateRestart()
-
-def getConcreateState(obj):
-    if isinstance(obj.getState(), ConcreteStateBooting):
-        return "booting"
-    elif isinstance(obj.getState(), ConcreteStateRun):
-        return "running"
-    elif isinstance(obj.getState(),ConcreteStateShutDown):
-        return "shutdown"
-    elif isinstance(obj.getState(),ConcreteStateRestart):
-        return "restart"
+        return ConcreteStateRestart("restart")
 
 def startMain(initial_operation, change_operation):
     obj = Context(setConcreteState(initial_operation))
     print("### パソコンを、[{0}]します".format(initial_operation))
     obj.handle()
-    print("### パソコンは、[{0}]の動作状態になりました".format(getConcreateState(obj)))
+    print("### パソコンは、[{0}]の動作状態になりました".format(obj.getState()))
     print("")
 
     print("... sleep 5 second")
@@ -36,7 +26,7 @@ def startMain(initial_operation, change_operation):
     obj.setState(setConcreteState(change_operation))
     print("### パソコンを、[{0}]します".format(change_operation))
     obj.handle()
-    print("### パソコンの動作状態は、[{0}]になりました".format(getConcreateState(obj)))
+    print("### パソコンの動作状態は、[{0}]になりました".format(obj.getState()))
 
 
 if __name__ == "__main__":
